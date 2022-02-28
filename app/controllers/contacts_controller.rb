@@ -1,5 +1,6 @@
 class ContactsController < ApplicationController
   before_action :find_all_contacts, except: [:destroy]
+  before_action :find_contact, except: [:new, :create]
 
   def index
   end
@@ -18,13 +19,7 @@ class ContactsController < ApplicationController
     end
   end
 
-  def edit
-    @contact = Contact.find(params.require(:id))
-  end
-
   def update
-    @contact = Contact.find(params.require(:id))
-
     if @contact.update(contact_params)
       redirect_to new_contact_path, notice: "Contact updated"
     else
@@ -33,7 +28,6 @@ class ContactsController < ApplicationController
   end
 
   def destroy
-    @contact = Contact.find(params.require(:id))
     @contact.destroy
     redirect_to new_contact_path, notice: "Contact removed", status: :see_other
   end
@@ -46,5 +40,9 @@ class ContactsController < ApplicationController
 
     def find_all_contacts
       @contacts = Contact.all
+    end
+
+    def find_contact
+      @contact = Contact.find(params.require(:id))
     end
 end

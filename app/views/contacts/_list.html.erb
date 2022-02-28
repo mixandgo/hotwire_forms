@@ -9,10 +9,10 @@
   <% contacts.each do |contact| %>
     <tr>
       <td><%= contact.id %></td>
-      <td><%= contact.name %></td>
+      <td><%= link_to contact.name, contact_path(contact), data: { turbo_frame: "_top" } %></td>
       <td><%= contact.age %></td>
       <td><%= contact.email %></td>
-      <td><%= link_to "Edit", edit_contact_path(contact), class: "btn btn-link btn-sm" %></td>
+      <td><%= link_to "Edit", edit_contact_path(contact), class: "btn btn-link btn-sm", data: { turbo_frame: "_top" } %></td>
       <td><%= button_to "Delete", contact_path(contact), method: :delete, class: "btn btn-link btn-sm" %></td>
     </tr>
   <% end %>
