@@ -1,0 +1,12 @@
+<div class="prose lg:prose-xl">
+  <h1>Edit contact</h1>
+</div>
+
+<div class="grid grid-cols-2 gap-4 mt-8">
+  <div class="bg-gray-100 p-8">
+    <%= render partial: "list", locals: { contacts: @contacts } %>
+  </div>
+  <div class="form-control w-full max-w-xs">
+    <%= render partial: "form", locals: { contact: @contact } %>
+  </div>
+</div>

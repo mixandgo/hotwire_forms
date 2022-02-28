@@ -1,0 +1,16 @@
+<%= form_for contact do |f| %>
+  <% if contact.errors.any? %>
+    <div class="form-errors">
+      <div class="alert shadow-lg alert-error text-white">
+        Your form's got some errors
+      </div>
+    </div>
+  <% end %>
+  <%= f.text_field :name, placeholder: "Your first name", class: "input input-bordered w-full max-w-xs my-5" %>
+  <%= inline_error_for(:name, contact) %>
+  <%= f.text_field :age, placeholder: "Your age", class: "input input-bordered w-full max-w-xs my-4" %>
+  <%= inline_error_for(:age, contact) %>
+  <%= f.text_field :email, placeholder: "Your email address", class: "input input-bordered w-full max-w-xs my-4" %>
+  <%= inline_error_for(:email, contact) %>
+  <%= f.submit "Save", class: "form-control btn btn-primary my-4" %>
+<% end %>

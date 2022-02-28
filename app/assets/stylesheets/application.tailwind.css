@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  font-size: 20px
+}
+
+.form-errors {
+  color: red;
+}
+
+.field_with_errors .input-bordered {
+  border: 1px solid red;
+  margin-bottom: 0;
+}
+
+/* .alert-success { */
+/*   --tw-bg-opacity: 1; */
+/*   background-color: hsl(var(--su)/var(--tw-bg-opacity)); */
+/*   --tw-text-opacity: 1; */
+/*   color: hsl(var(--suc,var(--nc))/var(--tw-text-opacity)); */
+/* } */
+
+/* .text-white { */
+/*   --tw-text-opacity: 1; */
+/*   color: rgb(255 255 255/var(--tw-text-opacity)); */
+/* } */

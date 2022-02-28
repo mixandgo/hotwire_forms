@@ -1,0 +1,20 @@
+<table class="table table-zebra mt-0 w-full">
+  <tr class="w-full">
+    <th class="text-left">ID</th>
+    <th class="text-left">Name</th>
+    <th class="text-left">Age</th>
+    <th class="text-left">Email</th>
+    <th class="text-center" colspan="2">Actions</th>
+  </tr>
+  <% contacts.each do |contact| %>
+    <tr>
+      <td><%= contact.id %></td>
+      <td><%= contact.name %></td>
+      <td><%= contact.age %></td>
+      <td><%= contact.email %></td>
+      <td><%= link_to "Edit", edit_contact_path(contact), class: "btn btn-link btn-sm" %></td>
+      <td><%= button_to "Delete", contact_path(contact), method: :delete, class: "btn btn-link btn-sm" %></td>
+    </tr>
+  <% end %>
+</table>
+<div class="text-gray-400 mt-4 text-xs text-right">Showing <%= contacts.length %> <%= "contact".pluralize(contacts.length) %></div>

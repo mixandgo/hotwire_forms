@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  root "site#index"
+  resources :contacts
+  root "contacts#index"
 end
