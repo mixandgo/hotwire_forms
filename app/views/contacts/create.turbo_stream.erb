@@ -1,0 +1,4 @@
+<%= turbo_stream.update("flash", partial: "shared/flash") %>
+<%= turbo_stream.append("contacts-list", partial: "contacts/contact", locals: { contact: @contact }) %>
+<%= turbo_stream.update("contacts-count", partial: "contacts/count", locals: { contacts: @contacts }) %>
+<%= turbo_stream.update("contact-form", partial: "contacts/form", locals: { contact: Contact.new }) %>

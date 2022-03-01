@@ -13,12 +13,9 @@
   <body>
     <div class="container mx-auto">
       <div class="py-8">
-        <% flash.each do |type, msg| %>
-          <% alert_class = type == "notice" ? "success" : "error" %>
-          <div class="alert alert-<%= alert_class %> mb-8 text-white">
-            <%= msg %>
-          </div>
-        <% end %>
+        <div id="flash" class="flash">
+          <%= render partial: "shared/flash" %>
+        </div>
         <%= yield %>
       </div>
     </div>

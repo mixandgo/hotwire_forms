@@ -2,13 +2,11 @@
   <h1>New contact</h1>
 </div>
 
-<%= turbo_frame_tag "contacts-list" do %>
 <div class="grid grid-cols-2 gap-4 mt-8">
   <div class="bg-gray-100 p-8">
     <%= render partial: "list", locals: { contacts: @contacts } %>
   </div>
-  <div class="form-control w-full max-w-xs">
+  <div class="form-control w-full max-w-xs" id="contact-form">
     <%= render partial: "form", locals: { contact: @contact } %>
   </div>
 </div>
-<% end %>

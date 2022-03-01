@@ -1,0 +1,2 @@
+<%= turbo_stream.update("flash", partial: "shared/flash") %>
+<%= turbo_stream.replace(dom_id(@contact), partial: "contacts/contact", locals: { contact: @contact }) %>

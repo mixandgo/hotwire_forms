@@ -1,6 +1,7 @@
 class ContactsController < ApplicationController
-  before_action :find_all_contacts, except: [:destroy]
-  before_action :find_contact, except: [:new, :create]
+  include ActionView::RecordIdentifier
+  before_action :find_all_contacts
+  before_action :find_contact, except: [:new, :create, :index]
 
   def index
   end
@@ -13,7 +14,7 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
 
     if @contact.save
-      redirect_to new_contact_path, notice: "Contact created"
+      flash[:notice] = "Contact created"
     else
       render :new, status: :unprocessable_entity
     end
@@ -21,7 +22,7 @@ class ContactsController < ApplicationController
 
   def update
     if @contact.update(contact_params)
-      redirect_to new_contact_path, notice: "Contact updated"
+      flash[:notice] = "Contact updated"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -29,7 +30,12 @@ class ContactsController < ApplicationController
 
   def destroy
     @contact.destroy
-    redirect_to new_contact_path, notice: "Contact removed", status: :see_other
+    flash[:notice] = "Contact removed"
+    render turbo_stream: [
+      turbo_stream.update("flash", partial: "shared/flash"),
+      turbo_stream.remove(dom_id(@contact)),
+      turbo_stream.update("contacts-count", partial: "contacts/count", locals: { contacts: @contacts })
+    ]
   end
 
   private
