@@ -15,6 +15,79 @@ html {
   margin-bottom: 0;
 }
 
+/* Animation                                               */
+/*                                                         */
+/* Got it from here:                                       */
+/* https://edforshaw.co.uk/hotwire-turbo-stream-animations */
+/* and here:                                               */
+/* https://stackoverflow.com/a/61306871/4072276            */
+
+.animate-in {
+  animation: slide-in 0.25s ease-out;
+}
+
+.animate-out {
+  animation: slide-out 0.25s ease-out;
+}
+
+@keyframes slide-in {
+  from { transform: translateX(4rem); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slide-out {
+  from { transform: translateX(0); }
+  to { transform: translateX(4rem); }
+}
+
+.animate-item-in {
+  transition-duration: 0.25s;
+  animation: addRow 0.25s ease-in;
+  transform-origin: top;
+}
+
+.animate-item-out {
+  transition-duration: 0.25s;
+  animation: removeRow 0.25s ease-in;
+  transform-origin: bottom;
+}
+
+@keyframes addRow {
+  0% {
+    transform: scale(1, 0);
+    line-height: 0px;
+    background-color: #fff;
+    visibility: collapse;
+  }
+  50% {
+    transform: scale(1, 1);
+    line-height: 20px;
+    visibility: visible;
+  }
+  100% {
+  }
+}
+
+@keyframes removeRow {
+  100% {
+    transform: scale(1, 1);
+    line-height: 20px;
+    visibility: visible;
+  }
+  50% {
+    transform: scale(1, 0);
+    line-height: 0px;
+    background-color: #fff;
+    visibility: collapse;
+  }
+  0% {
+  }
+}
+.flash {
+  height: 70px;
+  margin-bottom: 2rem;
+}
+
 /* .alert-success { */
 /*   --tw-bg-opacity: 1; */
 /*   background-color: hsl(var(--su)/var(--tw-bg-opacity)); */

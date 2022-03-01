@@ -1,6 +1,6 @@
 <% flash.each do |type, msg| %>
   <% alert_class = type == "notice" ? "success" : "error" %>
-  <div class="alert alert-<%= alert_class %> mb-8 text-white">
+  <div class="alert alert-<%= alert_class %> mb-8 text-white" data-stream-enter-class="animate-in" data-stream-exit-class="animate-out">
     <%= msg %>
   </div>
 <% end %>
