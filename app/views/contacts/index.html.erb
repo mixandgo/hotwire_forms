@@ -9,7 +9,7 @@
     <% end %>
   </div>
   <div class="form-control w-full max-w-xs" id="search-form">
-    <%= form_tag contacts_path, method: :get, data: { turbo_frame: "search-results", turbo_action: "advance" } do |f| %>
+    <%= form_tag contacts_path, method: :get, data: { turbo_frame: "search-results", turbo_action: "advance", controller: "search", action: "input->search#submit" } do |f| %>
       <%= text_field_tag "query", nil, placeholder: "Search ...", class: "input input-bordered w-full max-w-xs my-5" %>
       <%= submit_tag "Save", class: "btn btn-primary" %>
     <% end %>
