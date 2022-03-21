@@ -4,13 +4,14 @@
 
 <div class="grid grid-cols-2 gap-4 mt-8">
   <div class="bg-gray-100 p-8">
-    <%= render partial: "list", locals: { contacts: @contacts } %>
+    <%= turbo_frame_tag "search-results" do %>
+      <%= render partial: "list", locals: { contacts: @contacts } %>
+    <% end %>
   </div>
   <div class="form-control w-full max-w-xs" id="search-form">
-    <%= form_tag contacts_path, method: :get do |f| %>
+    <%= form_tag contacts_path, method: :get, data: { turbo_frame: "search-results" } do |f| %>
       <%= text_field_tag "query", nil, placeholder: "Search ...", class: "input input-bordered w-full max-w-xs my-5" %>
       <%= submit_tag "Save", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
-
