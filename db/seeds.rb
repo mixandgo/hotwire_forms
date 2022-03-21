@@ -5,7 +5,17 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-[
+require "faker"
+
+random = Array.new(100) do
+  {
+    name: Faker::Name.first_name,
+    email: Faker::Internet.email,
+    age: Faker::Number.within(range: 19..80)
+  }
+end
+
+fixed = [
   { name: "John", email: "jdoe@example.com", age: 21 },
   { name: "Emma", email: "emma@example.com", age: 30 },
   { name: "Don", email: "don@example.com", age: 34 },
@@ -16,4 +26,6 @@
   { name: "Ed", email: "ed@example.com", age: 43 },
   { name: "Kevin", email: "kevin@example.com", age: 81 },
   { name: "Dave", email: "dave@example.com", age: 76 }
-].each(&Contact.method(:create))
+]
+
+(random + fixed).each(&Contact.method(:create))
