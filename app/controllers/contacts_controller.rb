@@ -1,9 +1,10 @@
 class ContactsController < ApplicationController
   include ActionView::RecordIdentifier
-  before_action :find_all_contacts
-  before_action :find_contact, except: [:new, :create, :index]
+  before_action :find_all_contacts, except: [:index]
+  before_action :find_contact, except: %i[new create index]
 
   def index
+    @contacts = Contact.search(params)
   end
 
   def new
@@ -34,7 +35,8 @@ class ContactsController < ApplicationController
     render turbo_stream: [
       turbo_stream.update("flash", partial: "shared/flash"),
       turbo_stream.remove(dom_id(@contact)),
-      turbo_stream.update("contacts-count", partial: "contacts/count", locals: { contacts: @contacts })
+      turbo_stream.update("contacts-count", partial: "contacts/count",
+locals: { contacts: @contacts })
     ]
   end
 
