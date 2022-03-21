@@ -1,11 +1,12 @@
 import { Controller } from "@hotwired/stimulus";
+import debounce from "debounce";
 
 export default class extends Controller {
-  connect() {
-    console.log("Search connected");
+  initialize() {
+    this.submit = debounce(this.submit.bind(this), 300);
   }
 
-  submit() {
-    console.log("Submit got called");
+  submit(_event) {
+    this.element.requestSubmit();
   }
 }
