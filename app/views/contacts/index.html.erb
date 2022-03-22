@@ -6,10 +6,8 @@
   <% end %>
 </div>
 
-<div class="">
-  <div class="bg-gray-100 p-8 col-span-5">
-    <%= turbo_frame_tag "search-results" do %>
-      <%= render partial: "list", locals: { contacts: @contacts } %>
-    <% end %>
-  </div>
+<div class="bg-gray-100 p-8 col-span-5">
+  <%= turbo_frame_tag "search-results" do %>
+    <%= render partial: "list", locals: { contacts: @contacts } %>
+  <% end %>
 </div>
